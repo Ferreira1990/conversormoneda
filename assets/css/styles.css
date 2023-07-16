@@ -1,21 +1,21 @@
-*{
+* {
     font-family: 'Roboto', sans-serif;
 }
 
-body{
+body {
     margin: 0;
 }
 
 
-.container{
+.container {
     width: 100%;
     display: grid;
     place-items: center;
-    text-align: center; 
+    text-align: center;
 
 }
 
-.containerapp{
+.containerapp {
     margin-top: 50px;
     margin-bottom: 30px;
     display: flex;
@@ -24,25 +24,25 @@ body{
     text-align: center;
     border: 2px solid grey;
     border-radius: 10px;
-    box-shadow: 10px 5px 20px rgb(111, 0, 255);    
+    box-shadow: 10px 5px 20px rgb(111, 0, 255);
     width: 400px;
     background-color: rgb(35, 60, 62);
     background-image: linear-gradient(rgba(226, 136, 249, 0.5), rgba(70, 39, 78, 0.818));
     backdrop-filter: blur(10px);
-    
+
 }
 
-h1{
+h1 {
     display: flex;
-    justify-content: center;   
+    justify-content: center;
     padding: 10px;
-    margin: 10px;   
+    margin: 10px;
     color: white;
-    letter-spacing: 2px; 
+    letter-spacing: 2px;
     text-shadow: 2px 2px #000000;
 }
 
-h4{
+h4 {
     color: white;
     font-weight: bold;
     font-size: 20px;
@@ -50,7 +50,7 @@ h4{
 
 
 
-button{
+button {
     margin: 30px;
     border-radius: 5px;
     border: none;
@@ -58,113 +58,107 @@ button{
     background-color: rgb(255, 238, 0);
     cursor: pointer;
     width: 60%;
-    height: 40px;    
-    }
+    height: 40px;
+}
 
-    button:hover{
-        background: url(../img/dolar.jpg);
-        background-size: cover;
-        background-position: center;
-        transition: all 1.5s;
-        letter-spacing: 1px;
-        color: rgb(0, 0, 0);
-        font-weight: bold;   
-        text-shadow: 0 0 1px black;
-        width: 60%;
-        
-    }
+button:hover {
+    background: url(../img/dolar.jpg);
+    background-size: cover;
+    background-position: center;
+    transition: all 1.5s;
+    letter-spacing: 1px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-shadow: 0 0 1px black;
+    width: 60%;
 
-    input{        
-        border-radius: 10px;
-        text-align: center;
-        padding: 8px;
-        width: 50%;
-    }
+}
 
-    .containercanvas{
-        display: grid;
-        place-items: center;
-    }
+input {
+    border-radius: 10px;
+    text-align: center;
+    padding: 8px;
+    width: 50%;
+}
 
-    .canvascustom{
+.containercanvas {
+    display: grid;
+    place-items: center;
+}
+
+.canvascustom {
+    margin: 0;
+    display: flex;
+    width: 500px;
+
+}
+
+.bandera {
+    width: 40px;
+}
+
+.money {
+    height: 10%;
+    width: 10%;
+}
+
+h2 {
+    color: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    text-shadow: 2px 2px #000000;
+}
+
+option {
+    text-align: center;
+}
+
+select {
+    height: 34px;
+    width: 60%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.containercanva {
+    width: 600px;
+}
+
+.customp {
+    color: white;
+    text-shadow: 2px 2px #000000;
+    letter-spacing: 1px;
+
+}
+
+/* ---------------------------------------------------- */
+
+
+
+
+
+
+@media (max-width: 500px) {
+    .canvascustom {
         margin: 0;
-        display: flex;         
-        width: 500px;    
-        
+        display: flex;
+        width: 360px;
+
     }
 
-    .bandera{
-        width: 40px;
-    }
-
-    .money{
-        height: 10%;
-        width: 10%;
-    }
-
-    h2{
-        color: rgb(255, 255, 255);
-        letter-spacing: 1px;
-        text-shadow: 2px 2px #000000;
-    }
-
-    option{
-        text-align: center;       
-    }
-
-    select{
-        height: 34px;
-        width: 60%;
+    .containerapp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border: 2px solid grey;
         border-radius: 10px;
+        box-shadow: 10px 5px 20px rgb(111, 0, 255);
+        width: 350px;
+        background-color: rgb(35, 60, 62);
+        background-image: linear-gradient(rgba(226, 136, 249, 0.5), rgba(70, 39, 78, 0.818));
+        backdrop-filter: blur(10px);
         cursor: pointer;
-    }
-
-    .containercanva{
-        width: 600px;
-    }
-
-    .customp{
-        color: white;
-        text-shadow: 2px 2px #000000;
-        letter-spacing: 1px;
-
-    }
-    /* ---------------------------------------------------- */
-    
-
- 
-
-
-
-    @media (max-width: 500px){
-        .canvascustom{
-            margin: 0;
-            display: flex;         
-            width: 360px;    
-            
-        }
-
-        .containerapp{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            border: 2px solid grey;
-            border-radius: 10px;
-            box-shadow: 10px 5px 20px rgb(111, 0, 255);             
-            width: 350px;
-            background-color: rgb(35, 60, 62);
-            background-image: linear-gradient(rgba(226, 136, 249, 0.5), rgba(70, 39, 78, 0.818));
-            backdrop-filter: blur(10px);
-            cursor: pointer;  
-
-        }
 
     }
 
-
-
- 
- 
-
-
+}

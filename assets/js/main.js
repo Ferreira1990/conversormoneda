@@ -1,15 +1,15 @@
 const btn = document.getElementById("btn")
 
-async function getApiInfo(moneda){
-    try{
-    const data = await fetch (`https://mindicador.cl/api/${moneda}`)
-    const json = await data.json();
-    return json;
-} catch(error){
-    console.log("Error en el API: ", error)
-    const aux = document.getElementById("Error");
-    aux.innerHTML = "<h1>Error consultando la API</h1>"
-}
+async function getApiInfo(moneda) {
+    try {
+        const data = await fetch(`https://mindicador.cl/api/${moneda}`)
+        const json = await data.json();
+        return json;
+    } catch (error) {
+        console.log("Error en el API: ", error)
+        const aux = document.getElementById("Error");
+        aux.innerHTML = "<h1>Error consultando la API</h1>"
+    }
 }
 
 btn.addEventListener("click", async () => {
@@ -30,19 +30,19 @@ btn.addEventListener("click", async () => {
 
         type: "line",
         data: {
-        labels: arregloFechas,
-        datasets: [
-            {
-        label: moneda,        
-        backgroundColor: "yellow",
-        data: arrrayvalores,
-        }]
+            labels: arregloFechas,
+            datasets: [
+                {
+                    label: moneda,
+                    backgroundColor: "yellow",
+                    data: arrrayvalores,
+                }]
         }
-        }
+    }
 
-        new Chart(grafico, infoGrafico);
-    });
+    new Chart(grafico, infoGrafico);
+});
 
-  
+
 
 
