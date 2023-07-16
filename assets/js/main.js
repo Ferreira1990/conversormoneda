@@ -21,7 +21,7 @@ btn.addEventListener("click", async () => {
     const infoApi = await getApiInfo(moneda);
     const calculo = inputCLP / infoApi.serie[0].valor;
 
-    total.innerHTML = calculo.toFixed(2);
+    total.innerHTML = calculo.toFixed(3);
 
     const arregloFechas = infoApi.serie.map(elem => elem.fecha.slice(0, 10)).reverse();
     const arrrayvalores = infoApi.serie.map((elem) => elem.valor).reverse();
