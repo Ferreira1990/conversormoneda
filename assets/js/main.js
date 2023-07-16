@@ -1,72 +1,48 @@
-async function convertidor() {
-    let clpValue = document.getElementById('clp-value').value;
-    let currencySelect = document.getElementById('currency-select');
-    let currency = currencySelect.value;
-    let apiUrl = 'https://mindicador.cl/api';
+const btn = document.getElementById("btn")
 
-    try {
-        let response = await fetch(apiUrl);
-        let data = await response.json();
-
-        let currencyRate;
-
-        if (currency === 'usd') {
-            currencyRate = data.dolar.valor;
-        } else {
-            currencyRate = data[currency].valor;
-        }
-
-        let convertedValue = clpValue / currencyRate;
-
-        document.getElementById('converted-value').textContent = convertedValue.toFixed(2);
-    } catch (error) {
-        alert('Selecciona una moneda por favor.');
-    }
+async function getApiInfo(moneda){
+    try{
+    const data = await fetch (`https://mindicador.cl/api/${moneda}`)
+    const json = await data.json();
+    return json;
+} catch(error){
+    console.log("Error en el API: ", error)
+    const aux = document.getElementById("Error");
+    aux.innerHTML = "<h1>Error consultando la API</h1>"
+}
 }
 
+btn.addEventListener("click", async () => {
+    const inputCLP = Number(document.getElementById("inputCLP").value);
+    const moneda = document.getElementById("moneda").value;
+    const total = document.getElementById("total");
+    const grafico = document.getElementById("myChart")
 
-// FUNCION CANVAS GRAFICO-------------------------------------
+    const infoApi = await getApiInfo(moneda);
+    const calculo = inputCLP / infoApi.serie[0].valor;
 
-async function getMonedas() {
-    const endpoint = "https://api.gael.cloud/general/public/monedas";
-    const res = await fetch(endpoint);
-    const monedas = await res.json();
-    return monedas;
-    }
+    total.innerHTML = calculo.toFixed(2);
 
-    function prepararConfiguracionParaLaGrafica(monedas) {        
-        const tipoDeGrafica = "line";
-        const nombresDeLasMonedas = monedas.map((moneda) => moneda.Codigo);
-        const titulo = "Monedas";
-        const colorDeLinea = "red";
-        const valores = monedas.map((moneda) => {
-        const valor = moneda.Valor.replace(",", ".");
-        return Number(valor);
-        });       
-        const config = {
-        type: tipoDeGrafica,
+    const arregloFechas = infoApi.serie.map(elem => elem.fecha.slice(0, 10)).reverse();
+    const arrrayvalores = infoApi.serie.map((elem) => elem.valor).reverse();
+
+    const infoGrafico = {
+
+        type: "line",
         data: {
-        labels: nombresDeLasMonedas,
+        labels: arregloFechas,
         datasets: [
             {
-                label: titulo,
-                backgroundColor: colorDeLinea,
-                data: valores
-                }
-                ]
-                }
-                };
-                return config;
-                }
+        label: moneda,        
+        backgroundColor: "yellow",
+        data: arrrayvalores,
+        }]
+        }
+        }
 
-                async function renderGrafica() {
-                    const monedas = await getMonedas();
-                    const config = prepararConfiguracionParaLaGrafica(monedas);
-                    const chartDOM = document.getElementById("myChart");
-                    new Chart(chartDOM, config);
-                    }
+        new Chart(grafico, infoGrafico);
+    });
 
-                    renderGrafica();
-                
-        
-    
+  
+
+
